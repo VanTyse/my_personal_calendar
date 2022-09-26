@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': 'http://localhost:5001',
+      '/api': 'https://vantyse-calendar.herokuapp.com',
     },
     port: 3000
   }
