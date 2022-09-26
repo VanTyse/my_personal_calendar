@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import './index.css'
 import { addDate, setAllEvents, selectAllEvents } from "../../redux/slices";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +8,15 @@ import DayModal from '../DayModal';
 import useInViewPort from '../../custom_hooks/useInViewPort'
 
 export const Calendar = ({startDate, endDate}: {startDate:Date, endDate:Date}) => {
+    const navigate = useNavigate()
+    const isLoggedIn = document.cookie.split('; ').some((item) => item.startsWith('token='))
+
+    useEffect(() => {
+        if (isLoggedIn) return
+        navigate('/login')
+    }, [])
+
+
     const date = Date.parse(startDate.toString());
     const dispatch = useDispatch();
     const [done, setDone] = useState<boolean>(false)
@@ -169,7 +179,7 @@ const Day = ({date, endDate, count, month, year}:{date: number, endDate:Date, co
     }
     return(
         <>
-        <div ref={ref} className={`day ${dateHasEvent && "has-event"}`} onClick={handleDayClick}>
+        <div ref={ref} className={`day ${dateHasEvent && "has-event fade-in"}`} onClick={handleDayClick}>
             {currentDay}
         </div>
         <Day date={date + 86400000}  endDate={endDate} count={newCount}  month={currentMonth} year={currentYear}/>
