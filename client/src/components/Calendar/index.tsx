@@ -155,6 +155,16 @@ const Day = ({date, endDate, count, month, year}:{date: number, endDate:Date, co
     const dispatch = useDispatch();
     const events =  useSelector(selectAllEvents)    
     const dateHasEvent = events.find((item:any) => item.date == date)
+    const [prevDHE, setPrevDHE] = useState(dateHasEvent);
+    const [rerender, setRerender] = useState(false)
+
+    useEffect(() => {
+        const prev = prevDHE;
+        if (prev !== dateHasEvent)setRerender(true)
+
+        const s = setTimeout(() => setPrevDHE(dateHasEvent), 2000)
+        return () => clearTimeout(s)
+    }, [dateHasEvent])
 
     const inViewPort = useInViewPort()
 
@@ -179,7 +189,7 @@ const Day = ({date, endDate, count, month, year}:{date: number, endDate:Date, co
     }
     return(
         <>
-        <div ref={ref} className={`day ${dateHasEvent && "has-event fade-in"}`} onClick={handleDayClick}>
+        <div ref={ref} className={`day ${dateHasEvent && "has-event"} ${rerender && 'fade-in'}`} onClick={handleDayClick}>
             {currentDay}
         </div>
         <Day date={date + 86400000}  endDate={endDate} count={newCount}  month={currentMonth} year={currentYear}/>
