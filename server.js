@@ -6,6 +6,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const session = require('express-session')
 const passport = require('passport')
 const cookieParser = require('cookie-parser');
+const path = require('path')
 
 //initialize express app
 const app = express()
@@ -21,6 +22,7 @@ passportConfig(passport)
 const eventRoutes = require('./routes/events')
 const authRoutes = require('./routes/auth')
 
+app.use(express.static(path.join(__dirname, '/client/dist/')))
 
 app.use(session({
     secret: 'secret',
@@ -38,6 +40,9 @@ app.use(passport.session())
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/event', eventRoutes)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/client/dist/index.html'))
+})
 app.use(errorHandlerMiddleware)
 
 const PORT = process.env.PORT || 5001
