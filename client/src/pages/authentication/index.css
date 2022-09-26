@@ -1,0 +1,72 @@
+.auth-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(200, 90%, 93%);
+}
+
+.register, .login{
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 1px 3px 20px rgba(0,0,0,.1);
+}
+
+.auth-container input{
+    width: 80vw;
+    padding: 11px;
+    max-width: 500px;
+    display: block;
+    background-color: #f4f4f7;
+    border-radius: 4px;
+    border: none;
+    margin-top: 5px;
+}
+
+.auth-container .input-group{
+    margin-top: 20px;
+}
+
+.auth-container .buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+}
+
+.auth-container .buttons button{
+    width: 45%;
+    max-width: 200px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.auth-container .buttons button:hover{
+    cursor: pointer;
+}
+
+.auth-container .buttons button[type='submit']{
+    background-color: var(--light-main-color);
+}
+
+
+
+.password-input{
+    position: relative;
+}
+
+.show-pass-btn{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    z-index: 2;
+    color: var(--main-color);
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.show-pass-btn:hover{
+    cursor: pointer;
+}

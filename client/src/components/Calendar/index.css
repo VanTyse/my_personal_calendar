@@ -1,0 +1,100 @@
+.calendar{
+    padding: 30px;
+    background-color: hsl(200, 90%, 93%);
+}
+
+.year{
+    margin-bottom: 30px;
+    position: relative;
+    transition: .3s;
+    opacity: 0;
+    top: 30px;
+}
+
+.year h1{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.month{
+    padding: 30px 0;
+    text-transform: uppercase;
+    position: relative;
+    transition: .3s;
+    opacity: 0;
+    top: 30px;
+}
+
+.month h2{
+margin-bottom: 20px;
+text-align: center;
+}
+
+.days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    color: #333;
+    min-height: 30px;
+    position: relative;
+    transition: all .3s;
+    opacity: 0;
+    top: 30px;
+}
+
+.day.has-event::after{
+    content: '';
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 3px;
+    right: 50%;
+    transform: translateX(50%);
+    border: 3px solid yellow;
+}
+
+.day-of-week{
+    font-size: 3vmin;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+    margin: 20px 0;
+    color: var(--dark-main-color);
+}
+
+.day:hover, .day:nth-of-type(2n+1):hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #fff;
+}
+
+.fade-in{
+    top: 0px;
+    opacity: 1;
+}
+
+.fade-out{
+    top: 50px;
+    opacity: 0;
+}
+
+
+@media screen and (min-width: 992px) {
+    .months{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+    }
+}
