@@ -2,6 +2,7 @@
     background-color: hsl(200, 90%, 93%);
     height: 100vh;
     width: 100%;
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,15 +13,15 @@
 }
 
 .home h1{
-    font-size: 56px;
+    font-size: 6vmin;
 }
 
 .home h2{
-    font-size: 43px;
+    font-size: 5vmin;
 }
 
 .home h3{
-    font-size: 27px;
+    font-size: 4vmin;
 }
 
 .home button{
